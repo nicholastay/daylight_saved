@@ -18,6 +18,6 @@ echo "<p>Generated at: $(date)</p>" >> $f
 echo "<p>.ics files to subscribe to for DST:<ul>" >> $f
 for tz in "$@"; do
 	cargo run $tz 50 150 > "./docs/$(basename "$tz").ics"
-	echo "<li><a href=\"/$(basename "$tz").ics\">$tz</a></li>" >>$f
+	echo "<li><a href=\"./$(basename "$tz").ics\">$tz</a></li>" >>$f
 done
 echo "</ul></p>" >> $f
