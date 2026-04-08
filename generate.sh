@@ -12,5 +12,5 @@ mkdir -p out
 set -xe
 
 for tz in "$@"; do
-	cargo run $tz > "./out/$(basename "$tz").ics"
+	cargo run $tz 50 150 > "./out/$(basename "$tz").ics"
 done

@@ -17,6 +17,6 @@ async fn root() -> &'static str {
 }
 
 async fn tz_ics(Path(tz_name): Path<String>) -> String {
-    daylight_saved::generate_transitions_ics(&tz_name)
+    daylight_saved::generate_transitions_ics(&tz_name, 5, 5)
         .unwrap_or_else(|e| format!("An error occurred while preparing your .ics file.\n\n{e}"))
 }

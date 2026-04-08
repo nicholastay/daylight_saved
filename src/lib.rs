@@ -7,16 +7,16 @@ use jiff::{
 
 // TODO: Break this up into smaller functions. To learn best patterns to do it.
 
-pub fn generate_transitions_ics(tz_name: &str) -> Result<String, jiff::Error> {
+pub fn generate_transitions_ics(tz_name: &str, years_context_prior: i16, years_context_future: i16) -> Result<String, jiff::Error> {
     let tz = TimeZone::get(tz_name)?;
     let now = Timestamp::now().to_zoned(tz.clone());
 
-    // Truncate to year starts and ends +/- 5 years worth
-    let from = date(now.year() - 5, 1, 1)
+    // Truncate to year starts and ends +/- n years worth
+    let from = date(now.year() - years_context_prior, 1, 1)
         .at(0, 0, 0, 0)
         .to_zoned(tz.clone())?
         .timestamp();
-    let to = date(now.year() + 6, 1, 1)
+    let to = date(now.year() + years_context_future, 12, 31)
         .at(0, 0, 0, 0)
         .to_zoned(tz.clone())?
         .timestamp();
