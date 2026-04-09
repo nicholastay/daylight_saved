@@ -110,6 +110,8 @@ DTSTART;value=date:{ymd}
 DTEND;value=date:{ymd1}
 SUMMARY:{summary}
 DESCRIPTION:{desc}
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
 END:VEVENT",
                     ymd = z.strftime("%Y%m%d"),
                     // all-day events must 'end' on the following day, suppsedly also for outlook support
